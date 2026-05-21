@@ -1,7 +1,13 @@
 import Pagina from "@/components/Pagina";
 
+const TITLE = "quién y por qué";
+
 export const metadata = {
-  title: "quién y por qué — pablo",
+  title: TITLE,
+  openGraph: {
+    title: TITLE,
+    images: [`/og?title=${encodeURIComponent(TITLE)}`],
+  },
 };
 
 export default async function QuienPage() {

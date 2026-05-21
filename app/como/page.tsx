@@ -1,7 +1,13 @@
 import Pagina from "@/components/Pagina";
 
+const TITLE = "cómo está hecho";
+
 export const metadata = {
-  title: "cómo está hecho — pablo",
+  title: TITLE,
+  openGraph: {
+    title: TITLE,
+    images: [`/og?title=${encodeURIComponent(TITLE)}`],
+  },
 };
 
 export default async function ComoPage() {
