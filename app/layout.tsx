@@ -9,7 +9,7 @@ import BackToTop from "@/components/BackToTop";
 const fraunces = Fraunces({
   variable: "--font-fraunces",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
+  weight: ["300", "400", "500"],
   style: ["normal", "italic"],
   display: "swap",
 });
@@ -75,6 +75,38 @@ export default function RootLayout({
         <script
           dangerouslySetInnerHTML={{
             __html: "document.documentElement.classList.add('js')",
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify([
+              {
+                "@context": "https://schema.org",
+                "@type": "WebSite",
+                name: SITE_TITLE,
+                url: SITE_URL,
+                description: SITE_DESC,
+                inLanguage: "es-ES",
+                author: {
+                  "@type": "Person",
+                  name: "Pablo García Dacosta",
+                  url: SITE_URL,
+                },
+              },
+              {
+                "@context": "https://schema.org",
+                "@type": "Person",
+                name: "Pablo García Dacosta",
+                url: SITE_URL,
+                address: {
+                  "@type": "PostalAddress",
+                  addressLocality: "A Coruña",
+                  addressRegion: "Galicia",
+                  addressCountry: "ES",
+                },
+              },
+            ]),
           }}
         />
       </head>
