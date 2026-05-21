@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>pablo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+
+:root {
+  color-scheme: light dark;
+  --bg:     light-dark(#F8F7F4, #0D0D0D);
+  --text:   light-dark(#131311, #E2DED6);
+  --muted:  light-dark(rgba(19,19,17,.30), rgba(226,222,214,.28));
+  --border: light-dark(rgba(19,19,17,.08), rgba(226,222,214,.07));
+  --hover:  light-dark(rgba(19,19,17,.05), rgba(226,222,214,.05));
+}
+
+html { font-size: 17px; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Fraunces', Georgia, serif;
+  min-height: 100vh;
+  display: flex;
+}
+
+/* ── SIDEBAR ── */
+aside {
+  width: 190px;
+  flex-shrink: 0;
+  position: fixed;
+  top: 0; left: 0;
+  height: 100vh;
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  padding: 2.2rem 1.6rem 2rem;
+}
+
+.s-name {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+  font-weight: 300;
+  margin-bottom: 2.8rem;
+}
+
+nav {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+}
+
+.s-link {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  text-decoration: none;
+  padding: 0.5rem 0.65rem;
+  border-radius: 3px;
+  cursor: pointer;
+  border: none;
+  background: none;
+  text-align: left;
+  width: 100%;
+  transition: all 0.12s;
+  line-height: 1.5;
+}
+.s-link:hover { background: var(--hover); color: var(--text); }
+.s-link.on { color: var(--text); background: var(--hover); }
+
+.s-bottom {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.52rem;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+  line-height: 1.8;
+}
+
+/* ── MAIN ── */
+main {
+  margin-left: 190px;
+  flex: 1;
+  min-height: 100vh;
+}
+
+.view { display: none; }
+.view.on { display: block; }
+
+/* ── RÍO ── */
+#v-rio {
+  max-width: 620px;
+  padding: 3.5rem 3rem 10rem;
+}
+
+/* ── ENTRADA ── */
+.entry {
+  padding: 3rem 0;
+  border-bottom: 1px solid var(--border);
+  opacity: 0;
+  animation: up 0.4s ease forwards;
+}
+.entry:first-child { padding-top: 0; }
+
+.entry:nth-child(1){animation-delay:.04s}
+.entry:nth-child(2){animation-delay:.09s}
+.entry:nth-child(3){animation-delay:.14s}
+.entry:nth-child(4){animation-delay:.19s}
+.entry:nth-child(5){animation-delay:.24s}
+.entry:nth-child(6){animation-delay:.29s}
+.entry:nth-child(7){animation-delay:.34s}
+.entry:nth-child(8){animation-delay:.39s}
+
+@keyframes up {
+  from { opacity:0; transform:translateY(8px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+
+/* Título de la entrada */
+.e-titulo {
+  font-family: 'Fraunces', serif;
+  font-weight: 500;
+  font-size: 1.05rem;
+  line-height: 1.4;
+  margin-bottom: 1rem;
+  color: var(--text);
+}
+
+/* Estilos de texto */
+.e-body { font-weight: 300; font-size: 1rem; line-height: 1.88; color: var(--text); }
+.e-body p + p { margin-top: 0.9rem; }
+
+.e-body.xl .e-titulo {
+  font-size: 1.55rem;
+  font-weight: 300;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+}
+
+.e-body.italic .e-titulo {
+  font-style: italic;
+  font-weight: 300;
+  font-size: 1.2rem;
+}
+
+.e-body.italic p {
+  font-style: italic;
+  font-size: 1.05rem;
+}
+
+.e-body.mono {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.78rem;
+  line-height: 1.75;
+  color: var(--muted);
+  letter-spacing: 0.01em;
+}
+.e-body.mono .e-titulo {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.78rem;
+  font-weight: 400;
+  color: var(--muted);
+  margin-bottom: 0.5rem;
+}
+
+/* Cita */
+.e-quote {
+  padding-left: 1.3rem;
+  border-left: 1px solid var(--muted);
+}
+.e-quote .e-titulo {
+  font-style: italic;
+  font-weight: 300;
+  font-size: 1.2rem;
+  line-height: 1.6;
+}
+.e-quote-src {
+  margin-top: 0.6rem;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.54rem;
+  color: var(--muted);
+  letter-spacing: 0.05em;
+}
+
+/* Galego */
+.gl-mark {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.5rem;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  display: block;
+  margin-bottom: 0.65rem;
+  text-transform: uppercase;
+}
+
+/* Fecha */
+.e-fecha {
+  margin-top: 1.3rem;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.52rem;
+  color: var(--muted);
+  letter-spacing: 0.05em;
+}
+
+/* ── PÁGINAS FIJAS ── */
+.page {
+  max-width: 580px;
+  padding: 4rem 3rem 8rem;
+  opacity: 0;
+  animation: up 0.4s ease 0.05s forwards;
+}
+
+.p-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.56rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  margin-bottom: 2.5rem;
+}
+
+.p-titulo {
+  font-size: 1.9rem;
+  font-weight: 300;
+  line-height: 1.3;
+  margin-bottom: 2rem;
+  letter-spacing: -0.01em;
+}
+
+.p-body {
+  font-weight: 300;
+  font-size: 1rem;
+  line-height: 1.9;
+}
+.p-body p + p { margin-top: 1rem; }
+.p-body em { font-style: italic; }
+
+/* Manifiesto */
+.m-item {
+  padding: 1.4rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.m-n {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.52rem;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+  margin-bottom: 0.5rem;
+}
+.m-text {
+  font-size: 1.05rem;
+  font-weight: 300;
+  line-height: 1.7;
+}
+
+/* Cómo está hecho */
+.stack-row {
+  display: flex;
+  gap: 1.4rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border);
+  align-items: baseline;
+}
+.stack-tool {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.66rem;
+  letter-spacing: 0.03em;
+  min-width: 110px;
+  flex-shrink: 0;
+  color: var(--text);
+}
+.stack-desc {
+  font-size: 0.9rem;
+  font-weight: 300;
+  line-height: 1.65;
+  color: var(--muted);
+}
+
+/* ── MOBILE ── */
+@media (max-width: 640px) {
+  body { flex-direction: column; }
+  aside {
+    position: sticky; top: 0;
+    width: 100%; height: auto;
+    flex-direction: row;
+    align-items: center;
+    padding: 1rem 1.4rem;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+    background: var(--bg);
+    gap: 0; z-index: 100;
+  }
+  .s-name { margin-bottom: 0; margin-right: 1rem; }
+  nav { flex-direction: row; gap: 0; }
+  .s-bottom { display: none; }
+  main { margin-left: 0; }
+  #v-rio, .page { padding: 2rem 1.4rem 6rem; }
+}
+</style>
+</head>
+<body>
+
+<aside>
+  <div class="s-name">pablo</div>
+  <nav>
+    <button class="s-link on"  onclick="show('rio',this)">pensamientos</button>
+    <button class="s-link"     onclick="show('quien',this)">quién y por qué</button>
+    <button class="s-link"     onclick="show('manifiesto',this)">manifiesto</button>
+    <button class="s-link"     onclick="show('como',this)">cómo está hecho</button>
+  </nav>
+  <div class="s-bottom">a coruña<br>galicia</div>
+</aside>
+
+<main>
+
+  <!-- ── RÍO ── -->
+  <div id="v-rio" class="view on">
+
+    <div class="entry">
+      <div class="e-body xl">
+        <div class="e-titulo">La realidad que creamos</div>
+        <p>La realidad no existe como algo fijo.</p>
+        <p>La creamos nosotros. Cada uno la ve en base a sus circunstancias, a sus vivencias, a su pasado. Pocas veces en base a su futuro.</p>
+        <p>La realidad es la foto de un momento y de una situación. Nada más.</p>
+        <p>Dos personas en el mismo sitio, en el mismo momento, ven cosas distintas. Ninguna miente. Cada una ve la suya.</p>
+        <p>Entender eso cambia cómo escuchas a los demás. Y cómo te escuchas a ti mismo.</p>
+      </div>
+      <div class="e-fecha">20 may 2025</div>
+    </div>
+
+    <div class="entry">
+      <div class="e-body">
+        <div class="e-titulo">Somos lo que proyectamos</div>
+        <p>Tanto en un negocio como en una relación como contigo mismo.</p>
+        <p>Eres lo que proyectas. Lo que transmites. No lo que crees que eres. No lo que dices que eres. Lo que los demás reciben cuando estás delante.</p>
+        <p>El negocio es un espejo. La relación es un espejo. Tú mismo eres un espejo.</p>
+        <p>Cuando algo falla fuera durante mucho tiempo y nada cambia — merece la pena mirar adentro primero.</p>
+      </div>
+      <div class="e-fecha">19 may 2025</div>
+    </div>
+
+    <div class="entry">
+      <div class="e-body">
+        <div class="e-titulo">La creatividad como conexión</div>
+        <p>Ocurre cuando conectas dos cosas que aparentemente no tienen nada que ver pero que en algún momento entraron en tu cabeza.</p>
+        <p>No es un talento. Es lo que pasa cuando tienes materia prima suficiente y variada.</p>
+        <p>El cerebro no inventa. Asocia.</p>
+        <p>Y lo hace mejor cuanto más le has dado. Conversaciones distintas. Libros de temas que no eran los tuyos. Momentos en sitios donde no eras el experto.</p>
+        <p>La gente más creativa que conozco no es la más inteligente. Es la más curiosa.</p>
+      </div>
+      <div class="e-fecha">15 may 2025</div>
+    </div>
+
+    <div class="entry">
+      <div class="e-body italic">
+        <div class="e-titulo">Si te atrae una lucecita, síguela</div>
+        <p>Si te lleva a un pantano, ya saldrás.</p>
+        <p>Cleobulo lo dijo hace 2.600 años y sigue siendo lo más honesto que he leído sobre tomar decisiones.</p>
+        <p>No hay más.</p>
+      </div>
+      <div class="e-fecha">10 may 2025</div>
+    </div>
+
+    <div class="entry">
+      <div class="e-body">
+        <div class="e-titulo">Cada persona que aparece en tu vida</div>
+        <p>Ha aparecido en el momento justo. Y ha sido para enseñarte algo.</p>
+        <p>No las eliges tú. Aparecen.</p>
+        <p>Las que te caen bien y las que no. Las que se quedan y las que se van. Las que te tratan bien y las que no.</p>
+        <p>Aunque sea pequeño. Aunque en ese momento no lo veas. Aunque tarde meses en entender qué era.</p>
+        <p>En este mundo con sobreinformación es fácil no verlo. Vamos demasiado rápido para notar lo que nos dejan.</p>
+        <p>Pero cuanto más lo interiorizas, más lo usas. Y más ves que nada llega sin motivo.</p>
+      </div>
+      <div class="e-fecha">8 may 2025</div>
+    </div>
+
+    <div class="entry">
+      <div class="e-body">
+        <div class="e-titulo">El fracaso que no enseñamos</div>
+        <p>Mi hijo tiene 13 años y a veces le veo paralizado antes de intentar algo porque no quiere hacerlo mal.</p>
+        <p>Eso no lo aprendió en casa. Lo aprendió en un sistema que lleva años castigando el error con un número y premiando la respuesta correcta aunque no entiendas por qué es correcta.</p>
+        <p>El problema no es que fracase. El problema es que tiene miedo de intentarlo. Y esa es la peor herencia que le podemos dejar.</p>
+        <p>Lo que nadie les enseña es que el músculo que más falta hace en la vida no es el de acertar. Es el de intentarlo otra vez después de fallar.</p>
+        <p>Yo quiero ser ese alguien para mi hijo. No sé si lo estoy consiguiendo. Pero sé que es lo único que importa.</p>
+      </div>
+      <div class="e-fecha">3 may 2025</div>
+    </div>
+
+    <div class="entry">
+      <div class="e-body mono">
+        <div class="e-titulo">el aplazamiento es el asesino de la oportunidad</div>
+        <p>y lo curioso es que siempre tienes una razón perfecta para aplazar.</p>
+      </div>
+      <div class="e-fecha">28 abr 2025</div>
+    </div>
+
+    <div class="entry">
+      <div class="e-quote">
+        <div class="e-titulo">La gente no compra productos. Compra la versión mejorada de sí mismos.</div>
+        <div class="e-quote-src">— Hormozi. Y desde que lo escuché no pienso en las ventas igual.</div>
+      </div>
+      <div class="e-fecha">—</div>
+    </div>
+
+    <div class="entry">
+      <span class="gl-mark">galego</span>
+      <div class="e-body italic">
+        <div class="e-titulo">O que non se fala, non se resolve</div>
+        <p>Hai negocios familiares en Galicia que levan 30 anos funcionando sen que ninguén fale do que vai pasar coa empresa cando os pais xa non estean.</p>
+        <p>É a conversación máis importante. E a que nunca se ten.</p>
+      </div>
+      <div class="e-fecha">20 abr 2025</div>
+    </div>
+
+  </div>
+
+  <!-- ── QUIÉN Y POR QUÉ ── -->
+  <div id="v-quien" class="view">
+    <div class="page">
+      <div class="p-label">quién y por qué</div>
+      <div class="p-titulo">No tengo del todo claro por qué escribo esto.</div>
+      <div class="p-body">
+        <p>Soy Pablo García Dacosta. Vivo en A Coruña. Llevo años metido en proyectos — náutica, consultoría, cosas digitales. He gestionado 110 barcos. He cometido errores que no se cuentan en reuniones. He aprendido más en conversaciones de bar que en libros de management.</p>
+        <p>Este sitio no es mi web profesional. No hay portfolio, no hay servicios, no hay formulario de contacto.</p>
+        <p>Es un cuaderno. Público porque me parece más honesto que escribir solo para mí.</p>
+        <p>Lo que aparece aquí son pensamientos mientras ocurren. Dudas sin resolver. Cosas que vi y no pude dejar de pensar. Frases que escuché y me pararon. A veces en español. A veces en gallego. A veces una sola línea. A veces varios párrafos.</p>
+        <p><em>Sin orden. Sin objetivo declarado. Sin saber muy bien a dónde va.</em></p>
+        <p>Si algo de esto conecta con algo tuyo, bien. Si no, también está bien.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── MANIFIESTO ── -->
+  <div id="v-manifiesto" class="view">
+    <div class="page">
+      <div class="p-label">manifiesto · may 2025</div>
+      <div class="p-titulo">Lo que creo ahora mismo.</div>
+
+      <div class="m-item">
+        <div class="m-n">01</div>
+        <div class="m-text">La realidad no existe. Existe la tuya. La que construyes con lo que decides ver y con lo que decides hacer cuando nadie te mira.</div>
+      </div>
+      <div class="m-item">
+        <div class="m-n">02</div>
+        <div class="m-text">La creatividad no es un talento. Es lo que ocurre cuando conectas dos cosas que no parecían tener relación. Y eso depende de cuánto has acumulado, no de lo listo que eres.</div>
+      </div>
+      <div class="m-item">
+        <div class="m-n">03</div>
+        <div class="m-text">Somos lo que proyectamos. No lo que decimos que somos. El negocio, la relación, tú mismo — todo es un espejo.</div>
+      </div>
+      <div class="m-item">
+        <div class="m-n">04</div>
+        <div class="m-text">El dolor de la disciplina pesa kilos. El dolor del arrepentimiento pesa toneladas.</div>
+      </div>
+      <div class="m-item">
+        <div class="m-n">05</div>
+        <div class="m-text">Cada persona que aparece en tu vida aparece en el momento justo y para enseñarte algo. Aunque en ese momento no lo veas.</div>
+      </div>
+      <div class="m-item">
+        <div class="m-n">06</div>
+        <div class="m-text">Si te atrae una lucecita, síguela. Si te lleva a un pantano, ya saldrás. Pero si no la sigues, toda tu vida te preguntarás si era tu estrella.</div>
+      </div>
+      <div class="m-item">
+        <div class="m-n">07</div>
+        <div class="m-text">Lo que no son cuentas, son cuentos.</div>
+      </div>
+      <div class="m-item">
+        <div class="m-n">08</div>
+        <div class="m-text">Tu capacidad de aprender es tu principal activo. No lo que ya sabes.</div>
+      </div>
+      <div class="m-item">
+        <div class="m-n">09</div>
+        <div class="m-text">Los negocios no mejoran si tú no mejoras. Siempre.</div>
+      </div>
+      <div class="m-item">
+        <div class="m-n">10</div>
+        <div class="m-text">La felicidad no es una meta. Es la forma en que caminas.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── CÓMO ESTÁ HECHO ── -->
+  <div id="v-como" class="view">
+    <div class="page">
+      <div class="p-label">cómo está construido esto</div>
+      <div class="p-titulo">Transparencia total sobre cómo funciona este sitio.</div>
+      <div class="p-body" style="margin-bottom:2rem">
+        <p>Este cuaderno está construido con herramientas que en su mayoría no existían hace dos años. Lo cuento porque forma parte de lo que es este proyecto — no solo el contenido sino cómo se hace.</p>
+      </div>
+
+      <div class="stack-row">
+        <div class="stack-tool">Next.js</div>
+        <div class="stack-desc">El framework. La estructura invisible que hace que todo funcione como web.</div>
+      </div>
+      <div class="stack-row">
+        <div class="stack-tool">Vercel</div>
+        <div class="stack-desc">Donde vive. Cada vez que publico algo, se despliega solo en 30 segundos.</div>
+      </div>
+      <div class="stack-row">
+        <div class="stack-tool">GitHub</div>
+        <div class="stack-desc">El repositorio. Las entradas son archivos de texto. El historial es la memoria.</div>
+      </div>
+      <div class="stack-row">
+        <div class="stack-tool">Claude Code</div>
+        <div class="stack-desc">La IA que construyó esto. Le di instrucciones en lenguaje natural. No escribí una línea de código.</div>
+      </div>
+      <div class="stack-row">
+        <div class="stack-tool">Claude Cowork</div>
+        <div class="stack-desc">La app desde la que publico. Le digo algo desde el teléfono, él lo convierte en entrada y aparece aquí.</div>
+      </div>
+
+      <div class="p-body" style="margin-top:2rem">
+        <p>Cada entrada es un archivo de texto en el repositorio. Sin base de datos. Sin panel de administración. Sin nada que pueda romperse.</p>
+        <p><em>El repositorio es el cuaderno.</em></p>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<script>
+function show(id, btn) {
+  document.querySelectorAll('.view').forEach(v => v.classList.remove('on'));
+  document.querySelectorAll('.s-link').forEach(b => b.classList.remove('on'));
+  document.getElementById('v-' + id).classList.add('on');
+  btn.classList.add('on');
+  window.scrollTo(0,0);
+}
+</script>
+</body>
+</html>
