@@ -1,4 +1,5 @@
 import Entry from "@/components/Entry";
+import Reveal from "@/components/Reveal";
 import { getEntries } from "@/lib/entries";
 
 export default async function HomePage() {
@@ -9,6 +10,7 @@ export default async function HomePage() {
       {entries.map((entry) => (
         <Entry key={entry.slug} entry={entry} />
       ))}
+      <Reveal />
     </div>
   );
 }

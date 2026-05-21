@@ -33,6 +33,13 @@ export default function RootLayout({
       lang="es"
       className={`${fraunces.variable} ${dmMono.variable}`}
     >
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: "document.documentElement.classList.add('js')",
+          }}
+        />
+      </head>
       <body>
         <Sidebar />
         <main>{children}</main>

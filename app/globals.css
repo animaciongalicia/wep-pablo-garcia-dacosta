@@ -145,27 +145,33 @@ main {
   .page {
     padding: 2rem 1.4rem 6rem;
   }
+  .entry {
+    padding: 2rem 0;
+  }
 }
 
 /* ── ENTRADA ── */
 .entry {
   padding: 3rem 0;
   border-bottom: 1px solid var(--border);
-  opacity: 0;
-  animation: up 0.4s ease forwards;
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s ease;
 }
 .entry:first-child {
   padding-top: 0;
 }
 
-.entry:nth-child(1) { animation-delay: 0.04s; }
-.entry:nth-child(2) { animation-delay: 0.09s; }
-.entry:nth-child(3) { animation-delay: 0.14s; }
-.entry:nth-child(4) { animation-delay: 0.19s; }
-.entry:nth-child(5) { animation-delay: 0.24s; }
-.entry:nth-child(6) { animation-delay: 0.29s; }
-.entry:nth-child(7) { animation-delay: 0.34s; }
-.entry:nth-child(8) { animation-delay: 0.39s; }
+/* Fallback sin JS: las entradas se ven inmediatamente.
+   Con JS, html.js las oculta hasta que IntersectionObserver añade .visible. */
+html.js .entry {
+  opacity: 0;
+  transform: translateY(8px);
+}
+html.js .entry.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
 
 @keyframes up {
   from {
@@ -264,13 +270,38 @@ main {
   text-transform: uppercase;
 }
 
-/* Fecha */
+/* Fecha + permalink */
 .e-fecha {
   margin-top: 1.3rem;
   font-family: var(--font-dm-mono), monospace;
   font-size: 0.7rem;
   color: var(--muted);
   letter-spacing: 0.05em;
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+}
+.e-perma {
+  color: var(--muted);
+  text-decoration: none;
+  opacity: 0;
+  transition:
+    opacity 0.15s,
+    color 0.15s;
+}
+.entry:hover .e-perma,
+.e-perma:focus-visible {
+  opacity: 1;
+}
+.e-perma:hover {
+  color: var(--text);
+  opacity: 1;
+}
+/* En móvil siempre visible (no hay hover) */
+@media (hover: none) {
+  .e-perma {
+    opacity: 0.55;
+  }
 }
 
 /* ── PÁGINA FIJA ── */

@@ -1,4 +1,5 @@
 import type { Entry as EntryT } from "@/lib/entries";
+import Permalink from "@/components/Permalink";
 
 const MESES = [
   "ene",
@@ -23,10 +24,10 @@ function formatFecha(iso: string): string {
 }
 
 export default function Entry({ entry }: { entry: EntryT }) {
-  const { titulo, estilo, fecha, lang, contenido } = entry;
+  const { slug, titulo, estilo, fecha, lang, contenido } = entry;
 
   return (
-    <article className="entry">
+    <article id={slug} className="entry">
       {lang === "gl" && <span className="gl-mark">galego</span>}
 
       {estilo === "quote" ? (
@@ -47,7 +48,10 @@ export default function Entry({ entry }: { entry: EntryT }) {
         </div>
       )}
 
-      <div className="e-fecha">{formatFecha(fecha)}</div>
+      <div className="e-fecha">
+        <span>{formatFecha(fecha)}</span>
+        <Permalink slug={slug} />
+      </div>
     </article>
   );
 }
