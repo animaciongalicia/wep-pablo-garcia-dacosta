@@ -4,6 +4,7 @@ import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 import Sidebar from "@/components/Sidebar";
+import BackToTop from "@/components/BackToTop";
 
 const fraunces = Fraunces({
   variable: "--font-fraunces",
@@ -83,6 +84,7 @@ export default function RootLayout({
         </a>
         <Sidebar />
         <main id="contenido">{children}</main>
+        <BackToTop />
         <Analytics />
         <SpeedInsights />
       </body>

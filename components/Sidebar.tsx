@@ -31,9 +31,18 @@ export default function Sidebar() {
         })}
       </nav>
       <div className="s-bottom">
-        a coruña
-        <br />
-        galicia
+        <span>
+          a coruña
+          <br />
+          galicia
+        </span>
+        <a
+          href="/feed.xml"
+          className="s-rss"
+          aria-label="suscríbete por RSS"
+        >
+          rss
+        </a>
       </div>
     </aside>
   );
