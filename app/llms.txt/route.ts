@@ -15,7 +15,7 @@ export async function GET() {
 - [cómo está hecho](${BASE}/como): el stack y el flujo`;
 
   const entradas = `## entradas
-${entries.map((e) => `- [${e.titulo}](${BASE}/#${e.slug})`).join("\n")}`;
+${entries.map((e) => `- [${e.titulo}](${BASE}/p/${e.slug})`).join("\n")}`;
 
   const feeds = `## otros
 - [RSS](${BASE}/feed.xml)

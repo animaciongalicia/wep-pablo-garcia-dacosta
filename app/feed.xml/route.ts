@@ -16,7 +16,7 @@ export async function GET() {
 
   const items = entries
     .map((e) => {
-      const link = `${BASE}/#${e.slug}`;
+      const link = `${BASE}/p/${e.slug}`;
       const pubDate = e.fecha
         ? new Date(`${e.fecha}T00:00:00Z`).toUTCString()
         : new Date().toUTCString();
@@ -27,7 +27,7 @@ export async function GET() {
       return `    <item>
       <title>${escapeXml(e.titulo)}</title>
       <link>${link}</link>
-      <guid isPermaLink="false">${e.slug}</guid>
+      <guid isPermaLink="true">${link}</guid>
       <pubDate>${pubDate}</pubDate>
       <description><![CDATA[${description}]]></description>
     </item>`;
