@@ -10,15 +10,52 @@
 
 :root {
   color-scheme: light dark;
-  --bg: light-dark(#f8f7f4, #0d0d0d);
+  --bg: light-dark(#fafaf8, #0d0d0d);
   --text: light-dark(#131311, #e2ded6);
-  --muted: light-dark(rgba(19, 19, 17, 0.3), rgba(226, 222, 214, 0.28));
+  --muted: light-dark(rgba(19, 19, 17, 0.55), rgba(226, 222, 214, 0.55));
+  --muted-soft: light-dark(rgba(19, 19, 17, 0.32), rgba(226, 222, 214, 0.3));
   --border: light-dark(rgba(19, 19, 17, 0.08), rgba(226, 222, 214, 0.07));
   --hover: light-dark(rgba(19, 19, 17, 0.05), rgba(226, 222, 214, 0.05));
+  --highlight: light-dark(rgba(19, 19, 17, 0.06), rgba(226, 222, 214, 0.08));
 }
 
 html {
   font-size: 18px;
+}
+
+:focus {
+  outline: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--text);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--text);
+  outline-offset: 3px;
+}
+
+/* Skip link */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 1rem;
+  background: var(--bg);
+  color: var(--text);
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--text);
+  border-radius: 3px;
+  font-family: var(--font-dm-mono), monospace;
+  font-size: 0.7rem;
+  z-index: 200;
+  text-decoration: none;
+}
+.skip-link:focus-visible {
+  top: 1rem;
 }
 
 body {
@@ -65,16 +102,18 @@ aside nav {
   letter-spacing: 0.04em;
   color: var(--muted);
   text-decoration: none;
-  padding: 0.5rem 0.65rem;
+  padding: 0.75rem 0.65rem;
   border-radius: 3px;
   cursor: pointer;
   border: none;
   background: none;
   text-align: left;
   width: 100%;
+  min-height: 44px;
   transition: all 0.12s;
   line-height: 1.5;
-  display: block;
+  display: flex;
+  align-items: center;
 }
 
 .s-link:hover {

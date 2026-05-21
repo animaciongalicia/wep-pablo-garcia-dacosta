@@ -27,7 +27,11 @@ export default function Entry({ entry }: { entry: EntryT }) {
   const { slug, titulo, estilo, fecha, lang, contenido } = entry;
 
   return (
-    <article id={slug} className="entry">
+    <article
+      id={slug}
+      className="entry"
+      lang={lang === "gl" ? "gl" : undefined}
+    >
       {lang === "gl" && <span className="gl-mark">galego</span>}
 
       {estilo === "quote" ? (

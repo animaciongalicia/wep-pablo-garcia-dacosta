@@ -78,8 +78,11 @@ export default function RootLayout({
         />
       </head>
       <body>
+        <a href="#contenido" className="skip-link">
+          ir al contenido
+        </a>
         <Sidebar />
-        <main>{children}</main>
+        <main id="contenido">{children}</main>
         <Analytics />
         <SpeedInsights />
       </body>
