@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Fraunces, DM_Mono } from "next/font/google";
-import { GoogleAnalytics } from "@next/third-parties/google";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 import Sidebar from "@/components/Sidebar";
 
@@ -79,8 +80,9 @@ export default function RootLayout({
       <body>
         <Sidebar />
         <main>{children}</main>
+        <Analytics />
+        <SpeedInsights />
       </body>
-      <GoogleAnalytics gaId="G-YRPRMBWBG1" />
     </html>
   );
 }
