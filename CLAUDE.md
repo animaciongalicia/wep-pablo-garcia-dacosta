@@ -98,7 +98,7 @@ Sin abrir el ordenador. Sin tocar código.
 - Sin colores de marca
 - Tipografía: Fraunces (cuerpo) + DM Mono (meta, fechas)
 - Sidebar fijo izquierda en desktop, barra top en móvil
-- Máximo ancho del río: 600px
+- Máximo ancho del río: 800px
 - Sidebar tiene 4 links: pensamientos / quién y por qué / manifiesto / cómo está hecho
 - Sin tags visibles, sin categorías, sin buscador, sin comentarios
 
