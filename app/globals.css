@@ -102,6 +102,12 @@ main {
   min-height: 100vh;
 }
 
+/* ── RÍO ── */
+.rio {
+  max-width: 800px;
+  padding: 3.5rem 3rem 10rem;
+}
+
 /* ── MOBILE ── */
 @media (max-width: 640px) {
   body {
@@ -134,6 +140,9 @@ main {
   }
   main {
     margin-left: 0;
+  }
+  .rio {
+    padding: 2rem 1.4rem 6rem;
   }
 }
 
