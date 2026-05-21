@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Fraunces, DM_Mono } from "next/font/google";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
 import Sidebar from "@/components/Sidebar";
 
@@ -53,6 +54,9 @@ export const metadata: Metadata = {
     canonical: SITE_URL,
     types: { "application/rss+xml": "/feed.xml" },
   },
+  verification: {
+    google: "RcnSs35uM3qC6GSIbBQrPJqR0OHokqxZl5ZwJm4Lrxw",
+  },
 };
 
 export default function RootLayout({
@@ -76,6 +80,7 @@ export default function RootLayout({
         <Sidebar />
         <main>{children}</main>
       </body>
+      <GoogleAnalytics gaId="G-YRPRMBWBG1" />
     </html>
   );
 }
