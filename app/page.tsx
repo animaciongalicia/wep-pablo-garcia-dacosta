@@ -7,6 +7,9 @@ export default async function HomePage() {
 
   return (
     <div className="rio">
+      <p className="rio-hero">
+        cuaderno público. sin orden. en español, a veces en galego.
+      </p>
       {entries.map((entry) => (
         <Entry key={entry.slug} entry={entry} />
       ))}
