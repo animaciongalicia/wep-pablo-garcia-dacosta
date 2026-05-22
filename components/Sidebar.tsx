@@ -15,7 +15,23 @@ export default function Sidebar() {
 
   return (
     <aside>
-      <div className="s-name">pablo</div>
+      <div className="s-brand">
+        <span className="sr-only">Pablo García Dacosta</span>
+        <span aria-hidden="true" className="s-brand-line s-brand-first">
+          pablo
+        </span>
+        <span aria-hidden="true" className="s-brand-line">
+          garcía
+        </span>
+        <span aria-hidden="true" className="s-brand-line">
+          dacosta
+        </span>
+      </div>
+      <p className="s-slogan">
+        pensando
+        <br />
+        en voz alta
+      </p>
       <nav>
         {links.map(({ href, label }) => {
           const active = pathname === href;
